@@ -10,10 +10,11 @@ import { ObjectId } from "mongodb";
 
 export default async function postEdit(request, response) {
   const data = {
-    _id: request.body._id,
     title: request.body.title,
     content: request.body.content,
   };
+
+  console.log("edit", data);
   if (request.method === "POST") {
     let db = (await connectDB).db("forum");
     let modify = await db
