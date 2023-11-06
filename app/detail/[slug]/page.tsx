@@ -8,10 +8,13 @@ export default async function detail(props) {
   });
   console.log("[detail]", result);
   return (
-    <div>
-      <h4>상세페이지</h4>
-      <h5>{result.title}</h5>
-      <p>{result.content}</p>
-    </div>
+    <section className="w-full h-full">
+      <div className="w-4/6 mx-auto mt-44 border-solid border-4">
+        <div className="w-full border-solid border-b-4">
+          <h5 className="text-2xl p-2">{result.title}</h5>
+        </div>
+        <p className="text-lg p-2">{result.content}</p>
+      </div>
+    </section>
   );
 }

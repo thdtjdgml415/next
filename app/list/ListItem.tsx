@@ -15,15 +15,12 @@ interface listProps {
 export default function ListItem() {
   const { isLoading, isFetching, data, error } = useGetUsersQuery([]);
 
-  console.log("[counter]", data);
-
   const handleDelete = (event: React.ChangeEvent<HTMLButtonElement>) => {
     console.log("[delete]", event.target.value);
     const itemData: string = (event.target as HTMLButtonElement).value;
     const buttonParentDiv: any = (event.target as HTMLButtonElement).closest(
       ".item_list"
     ); // 혹은 parentNode를 사용하여 요소를 찾을 수 있음
-    console.log("buttonParentDiv", buttonParentDiv);
 
     fetch("/api/delete", {
       method: "DELETE",
@@ -52,7 +49,6 @@ export default function ListItem() {
   }
 
   return data?.map((item: any) => {
-    console.log("[item]", item);
     return (
       <div
         key={item._id}

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default async function Header() {
   return (
-    <div className="fixed left-0 top-0 w-full select-none h-[60px]  bg-[#F5F5F5]">
+    <header className="fixed left-0 top-0 w-full select-none h-[60px]  bg-[#F5F5F5]">
       <div className="max-w-[57rem] w-full h-full m-auto">
         <div className="flex mt-1.5 max-h-full justify-between">
           <div className="flex items-center mr-10 min-h-60">
@@ -32,6 +32,6 @@ export default async function Header() {
           </ul>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
