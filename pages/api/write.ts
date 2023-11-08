@@ -5,8 +5,14 @@
  */
 
 import { connectDB } from "@/util/database";
+import { getServerSession } from "next-auth";
+import { authOptions } from "./auth/[...nextauth]";
 
 export default async function Write(request, response) {
+  let session = await getServerSession(request, response, authOptions);
+
+  console.log("rmfqkfgod", session);
+
   let a = new Date();
   const year = a.getFullYear().toString().padStart(4, "0");
   const month = (a.getMonth() + 1).toString().padStart(2, "0");
@@ -22,6 +28,8 @@ export default async function Write(request, response) {
     const dataToInsert = {
       ...request.body, // 기존 request body 데이터 유지
       time: time, // 'time' 키에 time 변수 값 추가
+      user: session?.user?.email,
+      name: session?.user?.name,
     };
     let result = await db.collection("post").insertOne(dataToInsert);
     console.log("[list]", result);

@@ -1,8 +1,11 @@
 "use client";
 
 import BaseButton from "@/components/atom/BaseButton";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 import { useGetUsersQuery, useGetDeleteQuery } from "@/redux/services/userApi";
+import { getServerSession } from "next-auth";
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 
 interface listProps {
@@ -16,16 +19,19 @@ export default function ListItem() {
   const { isLoading, isFetching, data, error } = useGetUsersQuery([]);
 
   const handleDelete = (event: React.ChangeEvent<HTMLButtonElement>) => {
-    console.log("[delete]", event.target.value);
+    console.log("[delete]", event);
     const itemData: string = (event.target as HTMLButtonElement).value;
     const buttonParentDiv: any = (event.target as HTMLButtonElement).closest(
       ".item_list"
     ); // 혹은 parentNode를 사용하여 요소를 찾을 수 있음
 
+    // let session = getServerSession(authOptions);
+
     fetch("/api/delete", {
       method: "DELETE",
       body: JSON.stringify({
         item: itemData,
+        // author: session,
       }),
     })
       .then((res) => {
@@ -79,6 +85,13 @@ export default function ListItem() {
             </div>
           </Link>
         </div>
+        <button
+          onClick={() => {
+            signOut();
+          }}
+        >
+          로그아웃
+        </button>
       </div>
     );
   });
