@@ -1,13 +1,14 @@
 import LoginBtn from "@/app/LoginBtn";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { useAppSelector } from "@/redux/hooks";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Header() {
   const session: any = await getServerSession(authOptions);
-
-  console.log("session", session);
+  // const user = useAppSelector((state) => state);
+  // console.log("session", session);
   return (
     <header className="fixed left-0 top-0 w-full select-none h-[60px]  bg-[#F5F5F5]">
       <div className="max-w-[57rem] w-full h-full m-auto">

@@ -4,6 +4,7 @@ import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/redux/provider";
 import Header from "@/components/header/Header";
+import AuthSession from "./AuthSession";
 
 const inter = Noto_Sans_KR({ subsets: ["latin"] });
 
@@ -19,11 +20,15 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <header>
-        <Header />
-      </header>
       <body className={inter.className}>
-        <Providers>{children}</Providers>
+        <Providers>
+          <AuthSession>
+            <header>
+              <Header />
+            </header>
+            {children}
+          </AuthSession>
+        </Providers>
       </body>
     </html>
   );

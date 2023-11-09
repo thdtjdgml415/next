@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./features/counterSlice";
+import sessionReducer from "./features/sessionSlice";
 import { userApi } from "./services/userApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
@@ -7,6 +8,7 @@ export const store = configureStore({
   reducer: {
     counterReducer,
     [userApi.reducerPath]: userApi.reducer,
+    sessionReducer,
   },
   devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) =>
