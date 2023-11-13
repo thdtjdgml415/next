@@ -4,9 +4,20 @@ import { useAppSelector } from "@/redux/hooks";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
+import { LoginImg } from "./LoginImg";
+
+interface sessionProps {
+  user: sessionUserProps;
+}
+
+interface sessionUserProps {
+  email: string;
+  image: string;
+  name: string;
+}
 
 export default async function Header() {
-  const session: any = await getServerSession(authOptions);
+  const session: sessionProps | null = await getServerSession(authOptions);
   // const user = useAppSelector((state) => state);
   // console.log("session", session);
   return (
@@ -48,13 +59,7 @@ export default async function Header() {
                 <LoginBtn />
               </li>
             ) : (
-              <img
-                className="border-solid border-2 rounded-full"
-                src={`${session?.user.image}`}
-                width={50}
-                height={50}
-                alt="Picture of the author"
-              />
+              <LoginImg session={session.user.image} />
             )}
           </ul>
         </div>
