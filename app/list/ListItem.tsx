@@ -5,7 +5,7 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 import { useGetUsersQuery, useGetDeleteQuery } from "@/redux/services/userApi";
 import { getServerSession } from "next-auth";
-import { signOut } from "next-auth/react";
+
 import Link from "next/link";
 
 interface listProps {
@@ -85,13 +85,6 @@ export default function ListItem() {
             </div>
           </Link>
         </div>
-        <button
-          onClick={() => {
-            signOut();
-          }}
-        >
-          로그아웃
-        </button>
       </div>
     );
   });

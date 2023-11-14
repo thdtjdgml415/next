@@ -1,21 +1,14 @@
 "use client";
 
 import BaseButton from "@/components/atom/BaseButton";
-import { useSearchParams } from "next/navigation";
+// import { useAppSelector } from "@/redux/hooks";
 import { useEffect, useState } from "react";
 
-interface CommentProps {
-  _id: object;
-  title: string;
-  content: string;
-  time: string;
-}
-
-export default function Comment() {
+export default function Comment({ item }: { item: string }): JSX.Element {
+  // const user = useAppSelector((state: any) => state?.user);
+  // console.log(user);
   const [comment, setComment] = useState<string>("");
 
-  const params = useSearchParams();
-  console.log("comment Param", params);
   const handleComment = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
   ) => {
@@ -23,12 +16,22 @@ export default function Comment() {
     setComment(e.target.value);
   };
 
-  // useEffect(() => {
-  //   const data = {
-  //     content: comment,
-  //     parent: result._id,
-  //   };
-  // }, [comment]);
+  const submitComment = () => {
+    fetch("/api/comment", {
+      method: "POST",
+      body: JSON.stringify({
+        _id: item,
+        content: comment,
+      }),
+    });
+  };
+
+  useEffect(() => {
+    fetch(`/api/commentList?_id=${item}`, {
+      method: "GET",
+    });
+  }, []);
+
   return (
     <>
       <div className="w-11/12 h-10 border-box border-solid border-y-2 px-2 mx-auto mb-10">
@@ -45,12 +48,8 @@ export default function Comment() {
           placeholder="댓글을 작성해주세요....."
         ></textarea>
         <BaseButton
-          className={"w-1/6 h-24 bg-cyan-300 text-white h-10"}
-          onClick={() => {
-            fetch("/comment", {
-              method: "POST",
-            });
-          }}
+          className={"w-1/6 h-24 bg-cyan-300 text-white "}
+          onClick={() => submitComment()}
         >
           댓글전송
         </BaseButton>

@@ -2,9 +2,16 @@ import { connectDB } from "@/util/database";
 import { ObjectId } from "bson";
 import Comment from "./Comment";
 
+interface CommentProps {
+  _id: string;
+  title: string;
+  content: string;
+  time: string;
+}
+
 export default async function detail(props) {
   let db = (await connectDB).db("forum");
-  let result = await db.collection("post").findOne({
+  let result: CommentProps = await db.collection("post").findOne({
     _id: new ObjectId(props.params.slug),
   });
 
@@ -17,7 +24,7 @@ export default async function detail(props) {
           <h5 className="text-2xl p-2">{result.title}</h5>
         </div>
         <p className="text-lg p-2 h-96 border-solid">{result.content}</p>
-        <Comment></Comment>
+        <Comment item={result._id} />
       </div>
     </section>
   );

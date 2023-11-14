@@ -24,7 +24,11 @@ export const userApi = createApi({
     getDelete: builder.query<Delete, string>({
       query: (id) => `delete/${id}`,
     }),
+    getComment: builder.query({
+      query: () => `api/comment`,
+    }),
   }),
 });
 
-export const { useGetUsersQuery, useGetDeleteQuery } = userApi;
+export const { useGetUsersQuery, useGetDeleteQuery, useGetCommentQuery } =
+  userApi;
