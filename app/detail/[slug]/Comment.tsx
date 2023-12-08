@@ -1,12 +1,13 @@
 "use client";
 
 import BaseButton from "@/components/atom/BaseButton";
-// import { useAppSelector } from "@/redux/hooks";
+import { useAppSelector } from "@/redux/hooks";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 export default function Comment({ item }: { item: string }): JSX.Element {
-  // const user = useAppSelector((state: any) => state?.user);
-  // console.log(user);
+  const user = useSelector((state: any) => state.sessionReducer);
+  console.log(user);
   const [comment, setComment] = useState<string>("");
 
   const handleComment = (

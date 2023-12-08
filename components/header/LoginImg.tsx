@@ -18,13 +18,7 @@ export const LoginImg = ({
 }): JSX.Element => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(
-      setUser({
-        email: session.email,
-        image: session.image,
-        name: session.name,
-      })
-    );
+    dispatch(setUser.setUser(session));
   }, [setUser]);
 
   console.log("user", session);

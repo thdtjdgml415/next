@@ -10,6 +10,7 @@ interface CommentProps {
 }
 
 export default async function detail(props) {
+  console.log(props);
   let db = (await connectDB).db("forum");
   let result: CommentProps = await db.collection("post").findOne({
     _id: new ObjectId(props.params.slug),
