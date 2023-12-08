@@ -1,4 +1,4 @@
-import ListItem from "./ListItem";
+import ListItem from "../../components/List/ListItem";
 
 export const dynamic = "force-dynamic";
 

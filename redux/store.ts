@@ -7,8 +7,8 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 export const store = configureStore({
   reducer: {
     counterReducer,
-    [userApi.reducerPath]: userApi.reducer,
     sessionReducer,
+    [userApi.reducerPath]: userApi.reducer,
   },
   devTools: process.env.NODE_ENV !== "production",
   middleware: (getDefaultMiddleware) =>

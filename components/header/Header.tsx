@@ -20,7 +20,7 @@ export default async function Header() {
 
   console.log("[session]", session);
   return (
-    <header className="fixed left-0 top-0 w-full select-none h-[60px]  bg-[#F5F5F5]">
+    <header className="fixed left-0 top-0 w-full select-none h-[60px] z-50  bg-[#F5F5F5]">
       <div className="max-w-[57rem] w-full h-full m-auto">
         <div className="flex mt-1.5 max-h-full justify-between">
           <div className="flex items-center mr-10 min-h-60">
