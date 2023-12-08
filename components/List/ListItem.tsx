@@ -4,9 +4,9 @@ import BaseButton from "@/components/atom/BaseButton";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 import { useGetUsersQuery, useGetDeleteQuery } from "@/redux/services/userApi";
-import { getServerSession } from "next-auth";
 
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 interface listProps {
   _id: string;
