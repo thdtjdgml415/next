@@ -23,9 +23,9 @@ export default async function RootLayout({
       <body className={inter.className}>
         <Providers>
           <AuthSession>
-            <header>
+            {/* <header>
               <Header />
-            </header>
+            </header> */}
             {children}
           </AuthSession>
         </Providers>

@@ -9,7 +9,7 @@ export default function TransitionLink({
   label,
 }: {
   href: string;
-  label: string;
+  label?: string;
 }) {
   const router: any = useRouter();
 
@@ -19,11 +19,13 @@ export default function TransitionLink({
   };
 
   return (
-    <button
-      className="border-[1px] border-black p-4 rounded-xl hover:bg-black hover:text-neutral-100 cursor-pointer"
-      onClick={handleClick}
-    >
-      {label}
-    </button>
+    <>
+      <button
+        className="px-2.5 py-3 text-15 leading-20 text-currentColor rounded-8 border-0  bg-transparent text-left hover:text-neutral-100 cursor-pointer"
+        onClick={handleClick}
+      >
+        {label}
+      </button>
+    </>
   );
 }

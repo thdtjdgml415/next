@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import Link from "next/link";
 
 import { LoginImg } from "./LoginImg";
+import TransitionLink from "../TransitionLink";
 
 interface sessionProps {
   user: sessionUserProps;
@@ -33,25 +34,13 @@ export default async function Header() {
           </div>
           <ul className="flex items-center p-0 m-0">
             <li className="px-2 rounded-md hover:bg-blue-100 hover:text-blue-400">
-              <Link href="/">
-                <div className="px-2.5 py-3 text-15 leading-20 text-currentColor rounded-8 border-0 cursor-pointer bg-transparent text-left">
-                  Post
-                </div>
-              </Link>
+              <TransitionLink href="/" label="home" />
             </li>
             <li className="px-2 rounded-md hover:bg-blue-100 hover:text-blue-400">
-              <Link href="/list">
-                <div className="px-2.5 py-3 text-15 leading-20 text-currentColor rounded-8 border-0 cursor-pointer bg-transparent text-left">
-                  list
-                </div>
-              </Link>
+              <TransitionLink href="/list" label="list" />
             </li>
             <li className="px-2 rounded-md hover:bg-blue-100 hover:text-blue-400">
-              <Link href="/write">
-                <div className="px-2.5 py-3 text-15 leading-20 text-currentColor rounded-8 border-0 cursor-pointer bg-transparent text-left">
-                  write
-                </div>
-              </Link>
+              <TransitionLink href="/write" label="write" />
             </li>
             {session == null ? (
               <li className="px-2 rounded-md hover:bg-blue-100 hover:text-blue-400">
