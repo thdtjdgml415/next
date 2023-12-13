@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@types/react-redux": "^7.1.28",
     "eslint-config-next": "^14.0.1",
+    "gsap": "^3.12.3",
     "install": "^0.13.0",
     "mongodb": "^4.17.1",
     "next": "^14.0.1",
